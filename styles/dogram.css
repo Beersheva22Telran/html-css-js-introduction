@@ -19,14 +19,14 @@ main {
     flex-direction: column;
 }
 .details-section {
-    margin-top: 3vh;
+    margin-top: 7vh;
     display: flex;
     align-self: center;
     justify-content: center;
 }
 .details-image {
-    width: 40vw;
-    height: 35vw;
+    width: 65vw;
+    height: 52vw;
     border-radius: 20%;
 }
 .details-container {
@@ -35,7 +35,7 @@ main {
 .details-title {
     background-color: beige;
     font-style: italic;
-    font-size: 0.8em;
+    font-size: 1em;
     position: absolute;
     left: -6vw;
     bottom: 2vh;
@@ -44,23 +44,36 @@ main {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    max-height: 30vh;
+    max-height: 60vh;
     overflow-y: auto;
+    justify-content: space-around;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top:6vh;
+    
 }
 .thumbnails-item {
     border: solid 1px blue;
     border-radius: 25%;
-    max-width: 12vw;
-    min-width: 12vw
+    max-width: 20vw;
+    min-width: 20vw;
+    margin-top: 3vh;
+    overflow: hidden;
 
 }
 .thumnails-image {
-    width: 12vw;
-    height: 9vw;
+    width: 20vw;
+    height: 12vw;
+    display: block;
 }
 .thumbnails-title {
     display: block;
     text-align: center;
-    background-color: azure;
+    background-color: burlywood;
 
+}
+@media (min-width: 650px) {
+    .thumbnails-title {
+        background-color: red;
+    }
 }
