@@ -1,25 +1,66 @@
-.link {
-    text-decoration: none;
-    
-    background-color: white;
-}
-
-.link-image{
-    width: 60px;
-    vertical-align: middle;
-}
-
-.link-title {
-    font-size: 1.5em;
-    width: 25vw;
-    display: inline-block;
-    text-align: left;
-    cursor: pointer;
-}
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background-color: aliceblue;
+    margin: 0;
+}
+header {
+    text-align: center;
+    background-color: antiquewhite;
+
+}
+.logo {
+    font-size: 1.6em;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+.details-section {
+    margin-top: 3vh;
+    display: flex;
+    align-self: center;
     justify-content: center;
-    height: 80vh;
+}
+.details-image {
+    width: 40vw;
+    height: 35vw;
+    border-radius: 20%;
+}
+.details-container {
+    position: relative;
+}
+.details-title {
+    background-color: beige;
+    font-style: italic;
+    font-size: 0.8em;
+    position: absolute;
+    left: -6vw;
+    bottom: 2vh;
+}
+.thumbnails-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 30vh;
+    overflow-y: auto;
+}
+.thumbnails-item {
+    border: solid 1px blue;
+    border-radius: 25%;
+    max-width: 12vw;
+    min-width: 12vw
+
+}
+.thumnails-image {
+    width: 12vw;
+    height: 9vw;
+}
+.thumbnails-title {
+    display: block;
+    text-align: center;
+    background-color: azure;
+
 }
