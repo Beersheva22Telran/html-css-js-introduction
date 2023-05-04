@@ -54,7 +54,7 @@ main {
 .details-title {
     background-color: beige;
     font-style: italic;
-    font-size: 1em;
+    font-size: 2em;
     position: absolute;
     left: -6vw;
     bottom: 2vh;
@@ -132,7 +132,7 @@ main {
         overflow: hidden
     }
     .details-title {
-        font-size: 1.3em;
+        font-size: 2em;
     }
         
 
@@ -144,6 +144,6 @@ main {
         border-radius: 20%;
     }  
     html {
-        font-size: 1.5rem
+        font-size: 2rem
     }
 }
