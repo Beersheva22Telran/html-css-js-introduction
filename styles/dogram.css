@@ -42,6 +42,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 5s;
 }
 .details-image {
     width: 65vw;
@@ -102,6 +103,25 @@ main {
     background-color: burlywood;
     height: var(--thumbnails-title-height)
 
+}
+
+.hidden .details-section {
+    display: none;
+}
+.hidden {
+   
+}
+.is-point {
+    transform: scale(0.001);
+   
+}
+
+.hide-button {
+    font-size: 0.8em;
+    position: absolute;
+    top: 4vh;
+    right: 5vw;
+    background-color: transparent;
 }
 @media (min-width: 650px) {
     :root {
