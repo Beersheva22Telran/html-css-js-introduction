@@ -204,7 +204,7 @@ main {
        margin-top: 10vh;
         
     }
-    .thumbnails-item:hover {
+   .hidden .thumbnails-item:hover {
         margin-top: auto;
         margin-bottom: auto;
     }
