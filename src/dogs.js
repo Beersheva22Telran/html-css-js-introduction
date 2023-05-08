@@ -18,7 +18,7 @@ function setDetails(anchor) {
     detailsSectionElement.classList.add(POINT_CLASS);
     setTimeout(function() {
         detailsSectionElement.classList.remove(POINT_CLASS);
-    }, 4000)
+    })
 }
 function showDetails() {
     mainSection.classList.remove(HIDDEN);

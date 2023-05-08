@@ -13,6 +13,18 @@
     --thumbnails-img-height: calc(var(--thumbnails-img-width) * 0.79);
     --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.3)
 }
+main.hidden {
+    --thumbnails-img-width: 40vw;
+    --thumbnails-img-height: calc(var(--thumbnails-img-width) * 0.79);
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.3)
+}
+.hidden .thumbnails-title {
+    font-size: 1.5em;
+}
+.hidden .thumbnails-list {
+    margin-top: 16px;
+    max-height: 85vh;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -42,7 +54,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 5s;
+    transition: 3s;
 }
 .details-image {
     width: 65vw;
@@ -113,8 +125,8 @@ main {
 }
 .is-point {
     transform: scale(0.001);
-   
-}
+    transition: 0s
+   }
 
 .hide-button {
     font-size: 0.8em;
@@ -129,12 +141,24 @@ main {
         --thumbnails-img-height: calc(var(--thumbnails-img-width) * 0.75);
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.25)
     }
+    main.hidden {
+        --thumbnails-img-width: 12vw;
+    }
+    .hidden .thumbnails-title {
+        font-size: 1.2em;
+    }
+    
     .thumbnails-list {
         flex-wrap: nowrap;
         max-height: 80vh;
         flex-direction: column;
         justify-content: start;
         margin-left:5vw;
+    }
+    .hidden .thumbnails-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
     main {
         flex-direction: row-reverse;
@@ -162,8 +186,28 @@ main {
         width: 45vw;
         height: 37vw;
         border-radius: 20%;
-    }  
+    } 
+    main.hidden {
+        --thumbnails-img-width: 11vw;
+    } 
     html {
         font-size: 2rem
     }
+    .hidden .thumbnails-title {
+        font-size: 0.9em;
+    }
+    .thumbnails-title {
+        font-size: 0.8em;
+    }
+    .hidden .thumbnails-list {
+       max-height: 90vh;
+       margin-top: 10vh;
+        
+    }
+    .thumbnails-item:hover {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+   
 }
