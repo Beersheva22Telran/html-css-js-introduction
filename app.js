@@ -82,13 +82,13 @@ function myToStringInt(number, radix) {
     do {
         res = getSymbol(number, radix) + res;
         number = Math.trunc(number / radix);
-    }while (number != 0);
+    } while (number != 0);
     return sign + res;
 }
 function getSymbol(number, radix) {
     const aCode = 'a'.charCodeAt(0);
     const delta = aCode - 10;
-    const remainder = number % radix ;
+    const remainder = number % radix;
     return remainder < 10 ? remainder + '' : String.fromCharCode(remainder + delta);
 }
 // console.log((123456789).toString(36));
@@ -98,10 +98,39 @@ function getSymbol(number, radix) {
 // console.log(myToStringInt(0, 36));
 // "string" or 'string' with no string interpolation 'a' - string
 //`...${<expression>}...`
-const strNum = '10100000111111110110';
-const redix = 2;
-console.log(`string with number ${strNum} for redix ${redix} is ${parseInt(strNum, redix)}`)
+const strNum = '#100';
+const redix = 16;
+//console.log(`string with number ${strNum} for redix ${redix} is ${parseInt(strNum, redix)}`)
 function myParseInt(strNum, redix) {
-    //the same behavier as stndard parseInt
+    //the same behavior as standard parseInt
+    strNum = strNum.trim();
+    let index = strNum.charAt(0) == '-' || strNum.charAt(0) == '+' ? 1 : 0;
+    let res = redix > 1 && redix < 37 ? getDigitCode(strNum, index, redix) : NaN;
+
+    if (!isNaN(res)) {
+        let digit;
+        index++;
+        while (index < strNum.length &&
+            !isNaN(digit = getDigitCode(strNum, index, redix))) {
+            res = res * redix + digit;
+            index++;
+        }
+        if(strNum[0] == '-') {
+            res = -res
+        }
+
+    }
+    return res;
 }
-console.log(`string with number ${strNum} for redix ${redix} is ${myParseInt(strNum, redix)}`)
+function getDigitCode(strNum, index, redix) {
+    const delta = 'a'.charCodeAt(0) - 10;
+    const symbol = strNum.charAt(index).toLowerCase();
+    const code = symbol >= '0' && symbol <= '9' ? +symbol : symbol.charCodeAt(0) - delta;
+    return code >= 0 && code < redix ? code : NaN;
+}
+
+//console.log(`string with number ${strNum} for redix ${redix} is ${myParseInt(strNum, redix)}`)
+
+//console.log(eval("let d = function() {return function {return 10}}; Math.sqrt(4) * (100 - d()())"));
+console.log(`3 == "3" is ${3 == "3"}`)
+console.log(`3 === "3" is ${3 === "3"}`)
