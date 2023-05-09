@@ -71,6 +71,37 @@ function myToStringInt(number, radix) {
     //removes fractional part, 34.25 => 34 ; 34.75 => 35 
     //toString method is diallowed
     //return string as a view presentation of the integer part of a given number in accordance with the given radix
+    //
+    const sign = number < 0 ? '-' : '';
+    number = Math.abs(number); //negative to positive
+    number = Math.round(number); //rounding to close integer number
+    if (radix < 2 || radix > 36) {
+        radix = 10;
+    }
+    let res = '';
+    do {
+        res = getSymbol(number, radix) + res;
+        number = Math.trunc(number / radix);
+    }while (number != 0);
+    return sign + res;
 }
-console.log((123456789).toString(36));
-console.log(myToStringInt + 10);
+function getSymbol(number, radix) {
+    const aCode = 'a'.charCodeAt(0);
+    const delta = aCode - 10;
+    const remainder = number % radix ;
+    return remainder < 10 ? remainder + '' : String.fromCharCode(remainder + delta);
+}
+// console.log((123456789).toString(36));
+// console.log(myToStringInt(123456789, 36));
+// console.log(myToStringInt(-123456789, 36));
+// console.log(myToStringInt(-123456789.5234, 36));
+// console.log(myToStringInt(0, 36));
+// "string" or 'string' with no string interpolation 'a' - string
+//`...${<expression>}...`
+const strNum = '10100000111111110110';
+const redix = 2;
+console.log(`string with number ${strNum} for redix ${redix} is ${parseInt(strNum, redix)}`)
+function myParseInt(strNum, redix) {
+    //the same behavier as stndard parseInt
+}
+console.log(`string with number ${strNum} for redix ${redix} is ${myParseInt(strNum, redix)}`)
