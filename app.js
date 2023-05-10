@@ -98,21 +98,29 @@ function getSymbol(number, radix) {
 // console.log(myToStringInt(0, 36));
 // "string" or 'string' with no string interpolation 'a' - string
 //`...${<expression>}...`
-const strNum = '#100';
-const redix = 16;
-//console.log(`string with number ${strNum} for redix ${redix} is ${parseInt(strNum, redix)}`)
-function myParseInt(strNum, redix) {
+const strNum = '-100';
+let radix=16;
+//console.log(`string with number ${strNum} for redix ${radix} is ${parseInt(strNum, radix)}`)
+function myParseInt(strNum, radix) {
     //the same behavior as standard parseInt
     strNum = strNum.trim();
     let index = strNum.charAt(0) == '-' || strNum.charAt(0) == '+' ? 1 : 0;
-    let res = redix > 1 && redix < 37 ? getDigitCode(strNum, index, redix) : NaN;
+    
+    if ((!radix || radix == 16) && getHexdecemalIndex(strNum.substring(index) )> 0) {
+        index += 2;
+        radix = 16
+    }
+    if (!radix) {
+        radix = 10;
+    }
+    let res = radix > 1 && radix < 37 ? getDigitCode(strNum, index, radix) : NaN;
 
     if (!isNaN(res)) {
         let digit;
         index++;
         while (index < strNum.length &&
-            !isNaN(digit = getDigitCode(strNum, index, redix))) {
-            res = res * redix + digit;
+            !isNaN(digit = getDigitCode(strNum, index, radix))) {
+            res = res * radix + digit;
             index++;
         }
         if(strNum[0] == '-') {
@@ -122,6 +130,10 @@ function myParseInt(strNum, redix) {
     }
     return res;
 }
+function getHexdecemalIndex(str) {
+   
+    return str.toLowerCase().startsWith('0x') ? 2 : 0;
+}
 function getDigitCode(strNum, index, redix) {
     const delta = 'a'.charCodeAt(0) - 10;
     const symbol = strNum.charAt(index).toLowerCase();
@@ -129,8 +141,18 @@ function getDigitCode(strNum, index, redix) {
     return code >= 0 && code < redix ? code : NaN;
 }
 
-//console.log(`string with number ${strNum} for redix ${redix} is ${myParseInt(strNum, redix)}`)
+//console.log(`string with number ${strNum} for redix ${radix} is ${myParseInt(strNum, radix)}`)
 
 //console.log(eval("let d = function() {return function {return 10}}; Math.sqrt(4) * (100 - d()())"));
-console.log(`3 == "3" is ${3 == "3"}`)
-console.log(`3 === "3" is ${3 === "3"}`)
+// console.log(`3 == "3" is ${3 == "3"}`)
+// console.log(`3 === "3" is ${3 === "3"}`)
+// let n = NaN;
+// n && console.log(true);
+// n = null;
+// console.log(`${null < "-1"} has type ${typeof (n + 2)}`)
+function sum (op1, op2 = 20) {
+    return op1 + op2
+}
+let a1 = 8;
+let a2;
+console.log(`a1 = ${a1}, a2 = ${a2} sum(a1, a2) is ${sum(a1, a2)}`)
