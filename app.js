@@ -27,7 +27,7 @@ function getArrayRandomIntNumbers(nNumbers, min, max, minInclusive=true,
  res =[...res];
  return res.map(() => getRandomIntNumber(min, max, minInclusive, maxInclusive) )
 }
-console.log(getArrayRandomIntNumbers(10, 0, 2))
+//console.log(getArrayRandomIntNumbers(10, 0, 2))
 let ar1 =[];
 ar1.push(1, 2, 3);
 ar1.length = 100;
@@ -48,10 +48,32 @@ function getListItems(array) {
     background-color:${v ? 'black':'white'}"></li>`).join('');
 }
 
-bodyId.innerHTML = getOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+//bodyId.innerHTML = getOrderedList(getArrayRandomIntNumbers(10, 0, 2))
 function getMatrixRandomIntNumbers(rows, columns, min, max) {
     let res = [];
  res.length = rows;
  res =[...res];
  return res.map(() => getArrayRandomIntNumbers(columns, min, max) )
 }
+//splice method for updating array
+let arS = [10, 20, -70, 100, 6, -10, 0];
+const arI = [1, 2, 3];
+let index = arS.indexOf(-70);
+arS.splice(index + 1, 0, ...arI);
+// console.log(arS)
+// console.log(arS.slice(index + 1, index + 4))
+// console.log(arS);
+let indexFirstNegative = arS.findIndex(v => v < 0);
+//console.log(index == indexFirstNegative);
+//arS = arS.filter(v => v > 0);
+//console.log(arS);
+console.log(arS.every(v => v > 0))
+console.log(arS.some(v => v < 0))
+function arraycopy(src, posSrc, dst, posDst=0, length) {
+    //TODO copy "length" elements from position "posSrc" of array "src" to array "dst" from position "posDst"
+}
+function moveElement(array, position, shift) {
+    //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, 1) => [1,2,4,3,5];
+}
+
+
