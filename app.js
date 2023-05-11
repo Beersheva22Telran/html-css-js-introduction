@@ -12,12 +12,22 @@ ar[10];
 //method "map"
 //console.log([1, 2, 3].map(n => n ** 2));
 function getRandomIntNumber(min, max, minInclusive=true, maxInclusive=false) {
- //TODO
+ if (!minInclusive) {
+    min++;
+ }
+ if (maxInclusive) {
+    max++;
+ }
+ return min < max ? Math.trunc(min + Math.random() * (max - min)) : NaN;
 }
 function getArrayRandomIntNumbers(nNumbers, min, max, minInclusive=true,
      maxInclusive=false) {
- //TODO apply only function getRandomIntNumber and Array method map
+ let res = [];
+ res.length = nNumbers;
+ res =[...res];
+ return res.map(() => getRandomIntNumber(min, max, minInclusive, maxInclusive) )
 }
+console.log(getArrayRandomIntNumbers(10, 0, 2))
 let ar1 =[];
 ar1.push(1, 2, 3);
 ar1.length = 100;
@@ -30,5 +40,11 @@ function getOrderedList(array) {
     //a given array elements
     //example: input- [1, 2, 3]
     //output "<ol><li>1</li><li>2</li><li>3</li></ol>"
+    return `<ol style="text-align:center; list-style:none">${getListItems(array)}</ol>`
 }
-console.log([1, 2, 3].join(''))
+
+function getListItems(array) {
+    return array.map(v => `<li style="font-size:30px">${v}</li>`).join('');
+}
+
+bodyId.innerHTML = getOrderedList(getArrayRandomIntNumbers(10, 0, 2))
