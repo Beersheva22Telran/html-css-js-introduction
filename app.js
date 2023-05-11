@@ -74,6 +74,9 @@ function arraycopy(src, posSrc, dst, posDst=0, length) {
 }
 function moveElement(array, position, shift) {
     //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, 1) => [1,2,4,3,5];
+    //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, -2) => [3,1,2,4,5];
+    //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, -20) => [3,1,2,4,5];
+    //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, 20) => [1,2,4,5,3];
 }
 
 
