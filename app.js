@@ -44,7 +44,14 @@ function getOrderedList(array) {
 }
 
 function getListItems(array) {
-    return array.map(v => `<li style="font-size:30px">${v}</li>`).join('');
+    return array.map(v => `<li style="width:30px; height:30px; border: solid 1px gray;
+    background-color:${v ? 'black':'white'}"></li>`).join('');
 }
 
 bodyId.innerHTML = getOrderedList(getArrayRandomIntNumbers(10, 0, 2))
+function getMatrixRandomIntNumbers(rows, columns, min, max) {
+    let res = [];
+ res.length = rows;
+ res =[...res];
+ return res.map(() => getArrayRandomIntNumbers(columns, min, max) )
+}
