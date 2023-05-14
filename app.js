@@ -63,12 +63,12 @@ arS.splice(index + 1, 0, ...arI);
 // console.log(arS)
 // console.log(arS.slice(index + 1, index + 4))
 // console.log(arS);
-let indexFirstNegative = arS.findIndex(v => v < 0);
+let indexFirstNegative = arS.findIndex(v => v < 0); 
 //console.log(index == indexFirstNegative);
 //arS = arS.filter(v => v > 0);
 //console.log(arS);
-console.log(arS.every(v => v > 0))
-console.log(arS.some(v => v < 0))
+// console.log(arS.every(v => v > 0))
+// console.log(arS.some(v => v < 0))
 function arraycopy(src, posSrc, dst, posDst=0, length) {
     //TODO copy "length" elements from position "posSrc" of array "src" to array "dst" from position "posDst"
 }
@@ -78,5 +78,13 @@ function moveElement(array, position, shift) {
     //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, -20) => [3,1,2,4,5];
     //example: ar =  [1, 2, 3, 4, 5] ; moveElement(ar,2, 20) => [1,2,4,5,3];
 }
+//reduce
+//console.log([1,2,3].reduce((res, cur) => res + cur, 10));
+//console.log([1,2,3].reduce((res, cur) => cur < res ? cur : res));
+const ar10 = [2, 3, 123, 200, 99, -5, 'abc'];
+console.log(ar10.sort((a, b) => a - b));
+
+
+
 
 
