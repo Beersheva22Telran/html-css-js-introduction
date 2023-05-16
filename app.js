@@ -32,7 +32,7 @@
     //display strings with their occurrency counts in the descending order of the counts
     //if counts are equaled then in ascending string values order
     
-    const occurrences = array.reduce((obj, s) => ({...obj, [s]: obj[s] ? obj[s] + 1 : 1}), {})
+    const occurrences = getOccurrences(array)
     Object.entries(occurrences).sort((e1, e2) => e1[1] == e2[1] ?
      e1[0].localeCompare(e2[0]) : e2[1] - e1[1])
      .forEach(e => console.log(`${e[0]} -> ${e[1]}`))
@@ -46,9 +46,21 @@
 
 const y = {xx: 0}
 delete (y.xx);
+function getOccurrences(array) {
+    return array.reduce((obj, s) => ({ ...obj, [s]: obj[s] ? obj[s] + 1 : 1 }), {});
+}
+
 //console.log(y.xx)
 function isAnagram(word, anagram) {
     //case insensitive strings
     //returns true if the sting 'anagram' is an anagram of the string 'word'
+    let res = false;
+    if (word.length === anagram.length) {
+        word = word.toLowerCase();
+        anagram = anagram.toLowerCase();
+        const occurrences = getOccurrences(Array.from(word));
+        res = Array.from(anagram).every(s => occurrences[s]-- > 0 );
+    }
+    return res;
     
 }
