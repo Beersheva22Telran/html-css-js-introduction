@@ -31,4 +31,6 @@ Array.prototype.map = function() {
 };
 const ar = [1, 2, 3, 4];
 console.log(ar.map());
+//const square1 = Square(10); TypeError as maust be operator new
+//console.log(square1);
 
