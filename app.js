@@ -1,36 +1,4 @@
-
-class Rectangle {
-    #width;
-    #height;
-    constructor(width, height) {
-        this.#width = width;
-        this.#height = height;
-
-    }
-    square() {
-
-        return this.#width * this.#height;
-    }
-    perimeter() {
-        return 2 * (this.#width + this.#height);
-    }
-}
-const rectangle = new Rectangle(3, 4);
-console.log(rectangle)
-let c;
-class Square extends Rectangle {
-    constructor(width) {
-        super(width, width);
-    }
-}
-const square = new Square(10);
-console.log(square.perimeter());
-Array.prototype.map = function() {
-    console.log(this)
-    return 'kuku'
-};
-const ar = [1, 2, 3, 4];
-console.log(ar.map());
-//const square1 = Square(10); TypeError as maust be operator new
-//console.log(square1);
-
+//write myForEach to call from any array with the same behavier as the standard forEach
+//write myMap to call from any array
+//write myFilter
+//write myReduce
