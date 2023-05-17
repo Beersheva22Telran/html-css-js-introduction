@@ -31,6 +31,14 @@ function displayPoint(z, t) {
 
 }
  const displayPoint1 = displayPoint.bind(point, 100, 200);
-displayPoint.call(point, 200, 300);
-displayPoint.apply(point, [300, 400])
+// displayPoint.call(point, 200, 300);
+// displayPoint.apply(point, [300, 400])
+function fun(...params) {
+    console.log(this);
+    params.forEach(p => console.log(p))
+}
+const obj = {fun: function(...params){console.log(this);
+    params.forEach(p => console.log(p))}}
+//fun(1, 2);
+obj.fun(1, 2);
 
