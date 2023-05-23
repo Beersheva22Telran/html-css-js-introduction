@@ -1,63 +1,16 @@
-//what's wrong
-function sleep (timeout) {
-    return new Promise(resolve => setTimeout(() => resolve(), timeout))
-    
-    
+async function getTemperatures(lat, long) {
+    const response = 
+    await fetch(`https://api.open-meteo.com/v1/gfs?latitude=${lat}&longitude=${long}&hourly=temperature_2m,apparent_temperature&timezone=IST`)
+    return response.json();
 }
-function f1() {
-    console.log('f1 performed')
-}
-function f2() {
-    console.log('f2 performed')
-}
-function f3() {
-    console.log('f3 performed')
-}
-// const promise = sleep(2000);
-// promise.then(() => f1()).then(() => f2()).then(() => f3())
-function getId(predicate) {
-    const ids = [123, 124, 125, 126];
-    const index = ids.findIndex(predicate);
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            return index < 0 ? reject('id not found') : resolve(ids[index])
-        }, 1000);
-    })
-}
-function getCar(id) {
-    const cars = {
-        '123': 'suzuki',
-        '124': 'hunday',
-        '125': 'honda'
-    }
-    const car = cars[id];
-    return new Promise((resolve, reject) =>
-     setTimeout(() => car ? resolve(car) : reject('no car found'), 1000))
-
-}
- function displayCar(predicate) {
-    return getId(predicate) 
-    .then(id => getCar(id))
-    
-    .then(car => console.log(car))
-    .catch(error => {
-        console.log(error);
-        //return 'mersedes'
-    })
-   
-    
-}
-async function displayCar(predicate) {
-    await sleep(20000)
-    try {
-        const id = await getId(predicate)
-    const car = await getCar(id);
-    console.log(car);
-    } catch (error) {
-       console.log(error) 
-    }
-    
-}
-displayCar(id => id == 126).then(() => console.log('thanks & good bye'));
-console.log('waiting for the data ...')
-
+ getTemperatures(31.89, 34.81).then((data) => console.log(data.hourly
+    .temperature_2m[20]))
+ .catch(error => console.log("kuku"))
+//async function getTemperatures(lat, long, startDate, days, hourFrom, hourTo) {
+    //Parameters: lat - latitude, long - longitude, startDate - ISO date of forecast,
+    // days - forecast days, hourFrom, hourTo - closed range of the hours for each day
+    //returns:
+    //array of objects {date: <string containing date YYYY-MM-YY with no time>,
+    // time: <hour number from the given range>, temperature: <number>,
+    // apperantTemperature: <number> }
+//}
