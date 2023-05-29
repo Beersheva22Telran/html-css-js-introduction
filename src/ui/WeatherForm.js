@@ -83,12 +83,6 @@ export default class WeatherForm {
         this.#daysElement.onchange = this.#daysHandler.bind(this);
         this.#hourToElement.onchange = this.#hourToHandler.bind(this);
         this.#hourFromElement.onchange = this.#hourFromHandler.bind(this);
-       
-        this.#formElement.onsubmit = (event) => {
-            event.preventDefault();
-            console.log(this.#formData);
-
-        }
         this.#formElement.onreset = () => {
             this.#formData = {};
             this.#setSelectOptions();
