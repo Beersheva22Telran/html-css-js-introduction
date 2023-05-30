@@ -1,25 +1,25 @@
 import { count } from "../util/number-functions.js";
 import { getRandomInt } from "../util/random.js";
-
+const minId = 100000;
+const maxId = 1000000;
 export default class CompanyService {
     #employees;
-    #minId;
-    #maxId
-    constructor(minId, maxId) {
+   
+    constructor() {
         this.#employees = {};
-        this.#minId = minId;
-        this.#maxId = maxId;
+        
 
     }
     addEmployee(employee) {
         const id = this.#getId();
         this.#employees[id] = {...employee, id};
+        return this.#employees[id];
 
     }
     #getId() {
         let id;
         do {
-            id = getRandomInt(this.#minId, this.#maxId);
+            id = getRandomInt(minId, maxId);
         }while(this.#employees[id]);
         return id;
     }
