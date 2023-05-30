@@ -19,11 +19,22 @@ const employeeColumns = [
     {field: 'department', headerName: 'Department'}
     
 
+];
+const statisticsColumns = [
+    {field: 'min', headerName: "Min value"},
+    {field: 'max', headerName: "Max value"},
+    {field: 'count', headerName: "Count"}
 ]
-const menu = new ApplicationBar("menu-place", sections);
+
+const menu = new ApplicationBar("menu-place", sections, );
 
 const employeeForm = new EmployeeForm("employees-form-place");
 const employeeTable = new DataGrid("employees-table-place", employeeColumns);
+const ageStatistics = new DataGrid("age-statistics-place", statisticsColumns );
+const salaryStatistics = new DataGrid("salary-statistics-place", statisticsColumns );
+function statisticsHandler(index) {
+    
+}
 async function run() {
     while (true) {
         await employeeForm.buttonHasPressed();
