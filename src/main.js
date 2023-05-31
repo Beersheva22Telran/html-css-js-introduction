@@ -7,7 +7,7 @@ import statisticsConfig from "./config/statistics-config.json" assert{type: 'jso
 import employeesConfig from "./config/employees-config.json" assert{type: 'json'}
 import { range } from "./util/number-functions.js";
 import Spinner from "./ui/Spinner.js";
-const N_EMPLOYEES = 100;
+const N_EMPLOYEES = 3;
 //employee model
 //{id: number of 9 digits, name: string, birthYear: number,
 // gender: female | male, salary: number, department: QA, Development, Audit, Accounting, Management}
@@ -41,8 +41,8 @@ const employeeTable = new DataGrid("employees-table-place", employeeColumns);
 const ageStatistics = new DataGrid("age-statistics-place", statisticsColumns);
 const salaryStatistics = new DataGrid("salary-statistics-place", statisticsColumns);
 const spinner = new Spinner("spinner-place");
-employeeForm.addHandler(async (data) => {
-    const employee = getRandomEmployee(minSalary, maxSalary, minYear, maxYear, departments);
+employeeForm.addHandler(async (employee) => {
+    
     await action(companyService.addEmployee.bind(companyService, employee));
 })
 async function menuHandler(index) {
@@ -68,10 +68,7 @@ async function menuHandler(index) {
     }
 
 }
-const promises = range(0, N_EMPLOYEES).map(() =>
-    companyService.addEmployee(getRandomEmployee(minSalary, maxSalary, minYear,
-        maxYear, departments)));
-Promise.all(promises)
+
 async function action(serviceFn) {
     spinner.start();
     const res = await serviceFn();
@@ -79,4 +76,11 @@ async function action(serviceFn) {
     return res;
     
 }
+function createRandomEmployees() {
+    const promises = range(0, N_EMPLOYEES).map(() =>
+    companyService.addEmployee(getRandomEmployee(minSalary, maxSalary, minYear,
+        maxYear, departments)));
+return Promise.all(promises)
+}
+action(createRandomEmployees);
 

@@ -39,10 +39,10 @@ export default class CompanyService {
             const min = e[0] * interval;
             const max = min + interval - 1;
             return {min, max, count: e[1]};
-        }), 5000)
+        }), 1000)
     }
     getAllEmployees() {
-        return getPromise(Object.values(this.#employees), 5000)
+        return getPromise(Object.values(this.#employees), 1000)
     }
 }
 function getPromise(state, timeout) {
