@@ -16,7 +16,7 @@ export default class CompanyService {
     addEmployee(employee) {
         const id = this.#getId();
         this.#employees[id] = {...employee, id};
-        return this.#employees[id];
+        return getPromise(this.#employees[id], 150);
 
     }
     #getId() {
@@ -35,13 +35,16 @@ export default class CompanyService {
             field = 'age';
         }
         const statisticsObj = count(array, field, interval);
-        return Object.entries(statisticsObj).map(e => {
+        return getPromise(Object.entries(statisticsObj).map(e => {
             const min = e[0] * interval;
             const max = min + interval - 1;
             return {min, max, count: e[1]};
-        })
+        }), 5000)
     }
     getAllEmployees() {
-        //TODO returns promise with array of all employee objects
+        return getPromise(Object.values(this.#employees), 5000)
     }
+}
+function getPromise(state, timeout) {
+    return new Promise(resolve => setTimeout(() => resolve(state), timeout))
 }

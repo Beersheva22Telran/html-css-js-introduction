@@ -1,12 +1,14 @@
 export default class Spinner {
-    //TODO
+    #spinnerElement
     constructor(parentId) {
-        //TODO
+        const parentElement = document.getElementById(parentId);
+        parentElement.innerHTML = `<div class="spinner" hidden></div>`;
+        this.#spinnerElement = parentElement.childNodes[0];
     }
     start() {
-        //TODO
+        this.#spinnerElement.hidden = false;
     }
     stop() {
-        //TODO
+        this.#spinnerElement.hidden = true;
     }
 }
